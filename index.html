@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bento Grid Demo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* Grid layout */
+  .bento-grid {
+    display: grid;
+    width: 100%;
+    grid-auto-rows: 22rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  /* Card base */
+  .bento-card {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.03), 0 2px 4px rgba(0,0,0,.05), 0 12px 24px rgba(0,0,0,.05);
+    transition: box-shadow 0.2s;
+  }
+  .bento-card:hover {
+    box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.10), 0 20px 40px rgba(0,0,0,.08);
+  }
+
+  /* Grid positions */
+  .card-files        { grid-column: 2; grid-row: 1 / 4; }
+  .card-search       { grid-column: 1; grid-row: 1 / 3; }
+  .card-multilingual { grid-column: 1; grid-row: 3; }
+  .card-calendar     { grid-column: 3; grid-row: 1; }
+  .card-notif        { grid-column: 3; grid-row: 2 / 4; }
+
+  /* Content layer */
+  .card-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+  .bento-card:hover .card-content {
+    transform: translateY(-2.5rem);
+  }
+
+  .card-icon {
+    width: 3rem;
+    height: 3rem;
+    color: #404040;
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .bento-card:hover .card-icon {
+    transform: scale(0.75);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #404040;
+    margin-top: 0.25rem;
+  }
+  .card-desc {
+    font-size: 0.875rem;
+    color: #a3a3a3;
+    max-width: 28rem;
+    line-height: 1.5;
+  }
+
+  /* CTA button layer */
+  .card-cta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transform: translateY(2.5rem);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 10;
+  }
+  .bento-card:hover .card-cta {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #404040;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .cta-btn:hover {
+    background: rgba(0,0,0,0.05);
+  }
+  .cta-arrow {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Hover overlay */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transition: background 0.3s;
+  }
+  .bento-card:hover .card-overlay {
+    background: rgba(0,0,0,0.03);
+  }
+
+  /* Background image */
+  .card-bg {
+    position: absolute;
+    top: -5rem;
+    right: -5rem;
+    opacity: 0.55;
+    width: 22rem;
+    height: 22rem;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .bento-card:hover .card-bg {
+    opacity: 0.35;
+  }
+</style>
+</head>
+<body class="min-h-screen bg-gray-50 p-10">
+
+  <div class="mx-auto max-w-6xl">
+
+    <!-- Page header -->
+    <div class="mb-10 text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900">Features</h1>
+      <p class="mt-3 text-lg text-gray-500">Everything you need, beautifully organized.</p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="bento-grid">
+
+      <!-- Card 1: Full text search (col 1, rows 1-2) -->
+      <div class="bento-card card-search">
+        <img class="card-bg"
+          src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?w=700&auto=format&fit=crop"
+          alt="">
+        <div class="card-content">
+          <!-- Input / cursor icon -->
+          <svg class="card-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.5 1C6.22386 1 6 1.22386 6 1.5C6 1.77614 6.22386 2 6.5 2H7V3.07143C5.77477 3.28566 4.73811 3.94025 4.03206 4.87143L3.47059 4.30996C3.27533 4.1147 2.95875 4.1147 2.76348 4.30996C2.56822 4.50522 2.56822 4.8218 2.76348 5.01706L3.38628 5.63986C3.14002 6.22732 3 6.87241 3 7.55C3 10.0077 5.01472 12 7.5 12C9.98528 12 12 10.0077 12 7.55C12 6.87241 11.86 6.22732 11.6137 5.63986L12.2365 5.01706C12.4318 4.8218 12.4318 4.50522 12.2365 4.30996C12.0413 4.1147 11.7247 4.1147 11.5294 4.30996L10.9679 4.87143C10.2619 3.94025 9.22523 3.28566 8 3.07143V2H8.5C8.77614 2 9 1.77614 9 1.5C9 1.22386 8.77614 1 8.5 1H6.5ZM7.5 4.5C9.43299 4.5 11 6.06701 11 8C11 9.93299 9.43299 11.5 7.5 11.5C5.56701 11.5 4 9.93299 4 8C4 6.06701 5.56701 4.5 7.5 4.5ZM7.5 6C7.5 6 7.5 6 7.5 6C6.39543 6 5.5 6.89543 5.5 8C5.5 9.10457 6.39543 10 7.5 10C8.60457 10 9.5 9.10457 9.5 8C9.5 6.89543 8.60457 6 7.5 6Z" fill="currentColor"/>
+          </svg>
+          <h3 class="card-title">Full text search</h3>
+          <p class="card-desc">Search through all your files in one place.</p>
+        </div>
+        <div class="card-cta">
+          <a href="#" class="cta-btn">
+            Learn more
+            <svg class="cta-arrow" viewBox="0 0 15 15" fill="none"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+        <div class="card-overlay"></div>
+      </div>
+
+      <!-- Card 2: Save your files (col 2, rows 1-3) -->
+      <div class="bento-card card-files">
+        <img class="card-bg"
+          src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=700&auto=format&fit=crop"
+          alt="">
+        <div class="card-content">
+          <!-- File text icon -->
+          <svg class="card-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 2.5C3 2.22386 3.22386 2 3.5 2H9.08579C9.21839 2 9.34557 2.05268 9.43934 2.14645L11.8536 4.56066C11.9473 4.65443 12 4.78161 12 4.91421V12.5C12 12.7761 11.7761 13 11.5 13H3.5C3.22386 13 3 12.7761 3 12.5V2.5ZM3.5 1C2.67157 1 2 1.67157 2 2.5V12.5C2 13.3284 2.67157 14 3.5 14H11.5C12.3284 14 13 13.3284 13 12.5V4.91421C13 4.51639 12.842 4.13486 12.5607 3.85355L10.1464 1.43934C9.86514 1.15804 9.48361 1 9.08579 1H3.5ZM4.5 4C4.22386 4 4 4.22386 4 4.5C4 4.77614 4.22386 5 4.5 5H7.5C7.77614 5 8 4.77614 8 4.5C8 4.22386 7.77614 4 7.5 4H4.5ZM4.5 7C4.22386 7 4 7.22386 4 7.5C4 7.77614 4.22386 8 4.5 8H10.5C10.7761 8 11 7.77614 11 7.5C11 7.22386 10.7761 7 10.5 7H4.5ZM4.5 10C4.22386 10 4 10.2239 4 10.5C4 10.7761 4.22386 11 4.5 11H10.5C10.7761 11 11 10.7761 11 10.5C11 10.2239 10.7761 10 10.5 10H4.5Z" fill="currentColor"/>
+          </svg>
+          <h3 class="card-title">Save your files</h3>
+          <p class="card-desc">We automatically save your files as you type.</p>
+        </div>
+        <div class="card-cta">
+          <a href="#" class="cta-btn">
+            Learn more
+            <svg class="cta-arrow" viewBox="0 0 15 15" fill="none"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+        <div class="card-overlay"></div>
+      </div>
+
+      <!-- Card 3: Calendar (col 3, row 1) -->
+      <div class="bento-card card-calendar">
+        <img class="card-bg"
+          src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=700&auto=format&fit=crop"
+          alt="">
+        <div class="card-content">
+          <!-- Calendar icon -->
+          <svg class="card-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 1C4.77614 1 5 1.22386 5 1.5V2H10V1.5C10 1.22386 10.2239 1 10.5 1C10.7761 1 11 1.22386 11 1.5V2H12.5C13.3284 2 14 2.67157 14 3.5V12.5C14 13.3284 13.3284 14 12.5 14H2.5C1.67157 14 1 13.3284 1 12.5V3.5C1 2.67157 1.67157 2 2.5 2H4V1.5C4 1.22386 4.22386 1 4.5 1ZM10 3V3.5C10 3.77614 10.2239 4 10.5 4C10.7761 4 11 3.77614 11 3.5V3H12.5C12.7761 3 13 3.22386 13 3.5V5H2V3.5C2 3.22386 2.22386 3 2.5 3H4V3.5C4 3.77614 4.22386 4 4.5 4C4.77614 4 5 3.77614 5 3.5V3H10ZM2 6V12.5C2 12.7761 2.22386 13 2.5 13H12.5C12.7761 13 13 12.7761 13 12.5V6H2ZM7 8C7 7.44772 7.44772 7 8 7C8.55228 7 9 7.44772 9 8C9 8.55228 8.55228 9 8 9C7.44772 9 7 8.55228 7 8ZM10 8C10 7.44772 10.4477 7 11 7C11.5523 7 12 7.44772 12 8C12 8.55228 11.5523 9 11 9C10.4477 9 10 8.55228 10 8ZM3 11C3 10.4477 3.44772 10 4 10C4.55228 10 5 10.4477 5 11C5 11.5523 4.55228 12 4 12C3.44772 12 3 11.5523 3 11ZM7 11C7 10.4477 7.44772 10 8 10C8.55228 10 9 10.4477 9 11C9 11.5523 8.55228 12 8 12C7.44772 12 7 11.5523 7 11Z" fill="currentColor"/>
+          </svg>
+          <h3 class="card-title">Calendar</h3>
+          <p class="card-desc">Use the calendar to filter your files by date.</p>
+        </div>
+        <div class="card-cta">
+          <a href="#" class="cta-btn">
+            Learn more
+            <svg class="cta-arrow" viewBox="0 0 15 15" fill="none"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+        <div class="card-overlay"></div>
+      </div>
+
+      <!-- Card 4: Multilingual (col 1, row 3) -->
+      <div class="bento-card card-multilingual">
+        <img class="card-bg"
+          src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=700&auto=format&fit=crop"
+          alt="">
+        <div class="card-content">
+          <!-- Globe icon -->
+          <svg class="card-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.49996 1.80002C4.35194 1.80002 1.79996 4.35201 1.79996 7.50002C1.79996 10.648 4.35194 13.2 7.49996 13.2C10.648 13.2 13.2 10.648 13.2 7.50002C13.2 4.35201 10.648 1.80002 7.49996 1.80002ZM0.899963 7.50002C0.899963 3.85494 3.85488 0.900024 7.49996 0.900024C11.145 0.900024 14.1 3.85494 14.1 7.50002C14.1 11.1451 11.145 14.1 7.49996 14.1C3.85488 14.1 0.899963 11.1451 0.899963 7.50002Z" fill="currentColor"/>
+            <path d="M13.4999 7.89998H1.49994V7.09998H13.4999V7.89998Z" fill="currentColor"/>
+            <path d="M7.09991 13.5V1.5H7.89991V13.5H7.09991Z" fill="currentColor"/>
+            <path d="M10.375 7.49998C10.375 9.32926 9.89346 10.9735 9.08171 12.1478C8.26696 13.3259 7.18187 14.05 6 14.05C4.81813 14.05 3.73304 13.3259 2.91829 12.1478C2.10654 10.9735 1.625 9.32926 1.625 7.49998C1.625 5.6707 2.10654 4.02648 2.91829 2.85218C3.73304 1.67409 4.81813 0.949982 6 0.949982C7.18187 0.949982 8.26696 1.67409 9.08171 2.85218C9.89346 4.02648 10.375 5.6707 10.375 7.49998Z" stroke="currentColor" stroke-width="0.75"/>
+          </svg>
+          <h3 class="card-title">Multilingual</h3>
+          <p class="card-desc">Supports 100+ languages and counting.</p>
+        </div>
+        <div class="card-cta">
+          <a href="#" class="cta-btn">
+            Learn more
+            <svg class="cta-arrow" viewBox="0 0 15 15" fill="none"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+        <div class="card-overlay"></div>
+      </div>
+
+      <!-- Card 5: Notifications (col 3, rows 2-3) -->
+      <div class="bento-card card-notif">
+        <img class="card-bg"
+          src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=700&auto=format&fit=crop"
+          alt="">
+        <div class="card-content">
+          <!-- Bell icon -->
+          <svg class="card-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.60124 1.27876C8.60124 0.820563 8.23068 0.450012 7.77248 0.450012C7.31428 0.450012 6.94373 0.820563 6.94373 1.27876V1.67342C4.64814 2.05607 2.88535 4.07676 2.88535 6.47671V7.92712C2.88535 9.42758 2.28678 10.8603 1.21555 11.9115C1.03578 12.0873 0.980964 12.3503 1.07635 12.5804C1.17173 12.8104 1.39739 12.9602 1.64735 12.9602H13.8972C14.1472 12.9602 14.3728 12.8104 14.4682 12.5804C14.5636 12.3503 14.5088 12.0873 14.329 11.9115C13.2578 10.8603 12.6592 9.42758 12.6592 7.92712V6.47671C12.6592 4.07676 10.8965 2.05607 8.60124 1.67342V1.27876ZM7.77248 2.48576C10.0741 2.48576 11.9466 4.27155 11.9466 6.47671V7.92712C11.9466 9.52516 12.5595 11.0617 13.6444 12.2476H1.90059C2.98553 11.0617 3.59844 9.52516 3.59844 7.92712V6.47671C3.59844 4.27155 5.47092 2.48576 7.77248 2.48576ZM9.82037 13.7086C9.82037 14.5557 9.13422 15.2419 8.28706 15.2419C7.43991 15.2419 6.75376 14.5557 6.75376 13.7086H9.82037Z" fill="currentColor"/>
+          </svg>
+          <h3 class="card-title">Notifications</h3>
+          <p class="card-desc">Get notified when someone shares a file or mentions you in a comment.</p>
+        </div>
+        <div class="card-cta">
+          <a href="#" class="cta-btn">
+            Learn more
+            <svg class="cta-arrow" viewBox="0 0 15 15" fill="none"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+        <div class="card-overlay"></div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

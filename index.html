@@ -3,480 +3,558 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amrin Yanya — Data Scientist</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Amrin Yanya — AI Systems Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',-apple-system,sans-serif;background:#0a0a0a;color:#e2e8f0;line-height:1.6;overflow-x:hidden;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;color:#0f172a;line-height:1.6;overflow-x:hidden;font-size:15px;}
 a{color:inherit;text-decoration:none;}
-:root{--blue:#3b82f6;--gold:#3b82f6;--navy:#0a0a0a;--navy2:#111111;--border:rgba(255,255,255,.08);--muted:#6b7280;--text:#f9fafb;--subtext:#9ca3af;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:60px;background:rgba(10,10,10,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:1px;}
-.nav-links{display:flex;gap:2rem;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--subtext);transition:color .2s;}
-.nav-links a:hover{color:var(--text);}
-.nav-cta{padding:7px 18px;border:1px solid rgba(59,130,246,.4);border-radius:6px;font-size:12.5px;font-weight:700;color:var(--blue);transition:background .2s;}
-.nav-cta:hover{background:rgba(59,130,246,.1);}
+nav{position:sticky;top:0;z-index:100;background:#ffffff;border-bottom:1px solid #e2e8f0;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.nav-inner{max-width:900px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-weight:700;font-size:14px;color:#0f172a;letter-spacing:-.2px;}
+.nav-links{display:flex;gap:1.75rem;}
+.nav-links a{font-size:13px;font-weight:500;color:#64748b;transition:color .15s;}
+.nav-links a:hover{color:#0f172a;}
+.nav-cta{font-size:13px;font-weight:600;color:#2563eb;padding:6px 16px;border:1.5px solid #2563eb;border-radius:6px;transition:background .15s,color .15s;}
+.nav-cta:hover{background:#2563eb;color:#fff;}
 
-/* FLAG */
-.flag{display:flex;height:3px;}
-.f1{flex:1;background:#0a0a0a;}.f2{flex:1;background:#3b82f6;}.f3{flex:1;background:#f9fafb;}
-
-/* SECTIONS */
-.section{padding:88px 6%;}
-.section-alt{background:var(--navy2);}
-.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
-.section-title{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.5px;color:#f8fafc;line-height:1.1;margin-bottom:48px;}
-.section-title span{color:var(--gold);}
-.divider{height:1px;background:var(--border);margin:0 6%;}
+/* WRAPPER */
+.wrap{max-width:900px;margin:0 auto;padding:0 24px;}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 6% 80px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 18% 65%,rgba(59,130,246,.1) 0%,transparent 70%),radial-gradient(ellipse 40% 45% at 85% 20%,rgba(59,130,246,.05) 0%,transparent 60%);pointer-events:none;}
-.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-.hero-eyebrow::before{content:'';width:28px;height:2px;background:var(--gold);}
-.hero-name{font-size:clamp(52px,9vw,96px);font-weight:900;letter-spacing:-3px;color:#f8fafc;line-height:.92;margin-bottom:20px;}
-.hero-name .gold{color:var(--gold);}
-.hero-title{font-size:clamp(15px,2.2vw,20px);font-weight:400;color:var(--subtext);margin-bottom:36px;max-width:560px;}
-.hero-title strong{color:#cbd5e1;font-weight:600;}
-.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;}
-.chip{padding:4px 13px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--subtext);background:rgba(255,255,255,.03);}
-.chip.accent{border-color:rgba(59,130,246,.35);color:var(--blue);}
-.hero-links{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:#3b82f6;color:#ffffff;border-radius:8px;font-size:14px;font-weight:700;transition:opacity .2s;}
-.btn-primary:hover{opacity:.9;}
-.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:600;color:var(--subtext);transition:border-color .2s,color .2s;}
-.btn-outline:hover{border-color:rgba(255,255,255,.2);color:var(--text);}
-.hero-metrics{display:flex;gap:0;margin-top:52px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);align-self:flex-start;}
-.hm-item{padding:18px 28px;text-align:center;border-right:1px solid var(--border);}
-.hm-item:last-child{border-right:none;}
-.hm-val{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:#f8fafc;line-height:1;}
-.hm-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.hero{padding:64px 24px 48px;border-bottom:1px solid #e2e8f0;}
+.hero-inner{max-width:900px;margin:0 auto;}
+.hero-eyebrow{font-size:12px;font-weight:600;color:#2563eb;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;}
+.hero-name{font-size:clamp(36px,6vw,56px);font-weight:800;letter-spacing:-1.5px;color:#0f172a;line-height:1.05;margin-bottom:10px;}
+.hero-title{font-size:clamp(15px,2vw,18px);font-weight:400;color:#475569;margin-bottom:28px;max-width:600px;line-height:1.5;}
+.hero-title strong{color:#0f172a;font-weight:600;}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;background:#0f172a;color:#fff;border-radius:7px;font-size:13.5px;font-weight:600;transition:background .15s;}
+.btn-primary:hover{background:#1e293b;}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border:1.5px solid #e2e8f0;border-radius:7px;font-size:13.5px;font-weight:600;color:#475569;transition:border-color .15s,color .15s;}
+.btn-outline:hover{border-color:#94a3b8;color:#0f172a;}
+.btn-blue{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;background:#2563eb;color:#fff;border-radius:7px;font-size:13.5px;font-weight:600;transition:background .15s;}
+.btn-blue:hover{background:#1d4ed8;}
 
-/* TIMELINE */
-.timeline{display:flex;flex-direction:column;max-width:780px;}
-.tl-item{display:flex;gap:24px;padding-bottom:40px;}
+/* STATS */
+.stats-row{display:flex;gap:0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;align-self:flex-start;width:fit-content;}
+.stat{padding:16px 24px;text-align:center;border-right:1px solid #e2e8f0;}
+.stat:last-child{border-right:none;}
+.stat-val{font-size:22px;font-weight:800;color:#0f172a;line-height:1;letter-spacing:-.5px;}
+.stat-lbl{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.6px;margin-top:3px;font-weight:500;}
+
+/* SECTION */
+section.cv-section{padding:52px 24px;border-bottom:1px solid #e2e8f0;}
+.cv-section:last-of-type{border-bottom:none;}
+.section-inner{max-width:900px;margin:0 auto;}
+.sec-label{font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;}
+.sec-title{font-size:clamp(22px,3.5vw,28px);font-weight:800;letter-spacing:-.5px;color:#0f172a;margin-bottom:36px;}
+.sec-title span{color:#2563eb;}
+
+/* ABOUT */
+.about-text{font-size:15px;color:#334155;line-height:1.85;max-width:720px;}
+.about-text p+p{margin-top:14px;}
+
+/* EXPERTISE */
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.exp-block{padding:20px 22px;border:1px solid #e2e8f0;border-radius:10px;background:#fafafa;}
+.exp-block-title{font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.pills{display:flex;flex-wrap:wrap;gap:6px;}
+.pill{padding:4px 11px;border-radius:20px;font-size:12px;font-weight:500;background:#f1f5f9;color:#334155;border:1px solid #e2e8f0;}
+.pill.accent{background:#eff6ff;color:#2563eb;border-color:#bfdbfe;}
+
+/* EXPERIENCE TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:20px;padding-bottom:36px;position:relative;}
 .tl-item:last-child{padding-bottom:0;}
-.tl-left{display:flex;flex-direction:column;align-items:center;}
-.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid var(--navy);flex-shrink:0;margin-top:6px;}
-.tl-line{width:1px;flex:1;background:var(--border);margin-top:6px;}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:20px;flex-shrink:0;}
+.tl-dot{width:11px;height:11px;border-radius:50%;background:#2563eb;border:2px solid #fff;box-shadow:0 0 0 2px #2563eb;flex-shrink:0;margin-top:7px;}
+.tl-line{width:1.5px;flex:1;background:#e2e8f0;margin-top:6px;}
 .tl-item:last-child .tl-line{display:none;}
-.tl-date{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
-.tl-role{font-size:17px;font-weight:700;color:#f8fafc;margin-bottom:2px;}
-.tl-company{font-size:13.5px;color:var(--subtext);margin-bottom:10px;}
-.tl-desc{font-size:13px;color:#64748b;line-height:1.75;}
-.tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
-.tl-tag{padding:2px 9px;border-radius:4px;font-size:10px;font-weight:600;background:rgba(255,255,255,.04);color:#64748b;border:1px solid var(--border);}
-
-/* PROJECTS BENTO */
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:14px;}
-.proj-card{position:relative;border-radius:14px;overflow:hidden;background:rgba(10,10,10,.85);border:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-end;transition:border-color .25s,transform .25s;cursor:pointer;}
-.proj-card:hover{border-color:rgba(255,255,255,.18);transform:translateY(-4px);}
-.proj-card.wide{grid-column:span 2;}
-.proj-card.tall{grid-row:span 2;}
-.proj-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.12;transition:opacity .3s;}
-.proj-card:hover .proj-bg{opacity:.2;}
-.proj-accent{position:absolute;top:0;left:0;right:0;height:3px;}
-.proj-body{position:relative;z-index:2;padding:24px;display:flex;flex-direction:column;gap:8px;height:100%;justify-content:flex-end;transition:transform .3s;}
-.proj-card:hover .proj-body{transform:translateY(-10px);}
-.proj-name{font-size:15px;font-weight:700;color:#f1f5f9;line-height:1.25;}
-.proj-desc{font-size:11.5px;color:var(--subtext);line-height:1.55;}
-.proj-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.proj-lang{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:var(--muted);}
-.proj-tags{display:flex;gap:5px;flex-wrap:wrap;}
-.proj-tag{padding:2px 8px;border-radius:4px;font-size:9.5px;font-weight:700;border:1px solid;}
-.proj-cta{position:absolute;bottom:18px;right:18px;z-index:3;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;font-size:11.5px;font-weight:700;color:var(--gold);display:flex;align-items:center;gap:4px;}
-.proj-card:hover .proj-cta{opacity:1;transform:translateY(0);}
+.tl-date{font-size:11px;font-weight:600;color:#2563eb;letter-spacing:.3px;margin-bottom:4px;text-transform:uppercase;}
+.tl-role{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:2px;line-height:1.3;}
+.tl-company{font-size:13px;color:#64748b;margin-bottom:10px;}
+.tl-desc{font-size:13.5px;color:#475569;line-height:1.75;max-width:680px;}
+.tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;}
+.tl-tag{padding:3px 10px;border-radius:4px;font-size:11px;font-weight:500;background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0;}
 
 /* EDUCATION */
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.edu-card{background:rgba(10,10,10,.7);border:1px solid var(--border);border-radius:12px;padding:28px;position:relative;overflow:hidden;}
-.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.edu-main::before{background:linear-gradient(90deg,#1d4ed8,#3b82f6);}
-.edu-cert::before{background:linear-gradient(90deg,#1e40af,#60a5fa);}
-.edu-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
-.edu-degree{font-size:17px;font-weight:700;color:#f1f5f9;margin-bottom:3px;}
-.edu-school{font-size:13px;color:var(--subtext);margin-bottom:12px;}
-.edu-detail{font-size:12.5px;color:#64748b;line-height:1.7;}
-.edu-badge{display:inline-block;margin-top:14px;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;}
-.badge-purple{background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.3);}
-.badge-gold{background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.3);}
-.cert-list{display:flex;flex-direction:column;gap:12px;margin-top:4px;}
-.cert-row .cert-name{font-size:13.5px;font-weight:600;color:#f1f5f9;}
-.cert-row .cert-meta{font-size:11.5px;color:var(--subtext);margin-top:1px;}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.edu-card{border:1px solid #e2e8f0;border-radius:10px;padding:24px;position:relative;overflow:hidden;background:#fafafa;}
+.edu-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#2563eb;border-radius:0;}
+.edu-cert::after{background:linear-gradient(90deg,#2563eb,#60a5fa);}
+.edu-eyebrow{font-size:10.5px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.edu-degree{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:3px;}
+.edu-school{font-size:13px;color:#64748b;margin-bottom:12px;}
+.edu-detail{font-size:12.5px;color:#64748b;line-height:1.75;}
+.edu-badge{display:inline-block;margin-top:14px;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+.cert-list{display:flex;flex-direction:column;gap:14px;}
+.cert-name{font-size:13.5px;font-weight:600;color:#0f172a;}
+.cert-meta{font-size:11.5px;color:#94a3b8;margin-top:1px;}
 
 /* PUBLICATION */
-.pub-card{background:rgba(10,10,10,.7);border:1px solid var(--border);border-radius:14px;padding:32px 36px;max-width:900px;position:relative;overflow:hidden;}
-.pub-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1d4ed8,#3b82f6,#93c5fd);}
-.pub-journal{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
-.pub-title{font-size:20px;font-weight:700;color:#f1f5f9;line-height:1.35;margin-bottom:10px;}
-.pub-authors{font-size:13px;color:var(--subtext);margin-bottom:18px;}
-.pub-authors strong{color:#f1f5f9;}
-.pub-abstract{font-size:12.5px;color:#64748b;line-height:1.8;margin-bottom:22px;}
+.pub-card{border:1px solid #e2e8f0;border-radius:10px;padding:28px 32px;background:#fafafa;position:relative;overflow:hidden;}
+.pub-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1d4ed8,#60a5fa);}
+.pub-venue{font-size:11px;font-weight:700;color:#2563eb;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.pub-title{font-size:18px;font-weight:700;color:#0f172a;line-height:1.4;margin-bottom:8px;}
+.pub-authors{font-size:13px;color:#64748b;margin-bottom:16px;}
+.pub-authors strong{color:#0f172a;font-weight:600;}
+.pub-abstract{font-size:13px;color:#475569;line-height:1.85;margin-bottom:20px;}
 .pub-metrics{display:flex;gap:10px;flex-wrap:wrap;}
-.pub-metric{padding:10px 18px;text-align:center;border:1px solid var(--border);border-radius:8px;}
-.pm-val{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;color:#f1f5f9;}
-.pm-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:3px;}
+.pub-metric{padding:10px 18px;border:1px solid #e2e8f0;border-radius:8px;text-align:center;background:#fff;}
+.pm-val{font-size:17px;font-weight:700;color:#0f172a;line-height:1;}
+.pm-lbl{font-size:9.5px;color:#94a3b8;text-transform:uppercase;letter-spacing:.7px;margin-top:3px;font-weight:500;}
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px;}
-.skill-block{background:rgba(10,10,10,.6);border:1px solid var(--border);border-radius:10px;padding:22px;}
-.skill-block-title{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:14px;}
-.skill-pills{display:flex;flex-wrap:wrap;gap:7px;}
-.skill-pill{padding:4px 11px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#cbd5e1;}
-.skill-pill.hot{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3);color:#93c5fd;}
+/* PROJECTS */
+.projects-list{display:flex;flex-direction:column;gap:16px;}
+.proj-card{border:1px solid #e2e8f0;border-radius:10px;padding:24px 28px;background:#fafafa;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,box-shadow .2s;cursor:pointer;}
+.proj-card:hover{border-color:#94a3b8;box-shadow:0 4px 20px rgba(0,0,0,.06);}
+.proj-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.proj-name{font-size:15.5px;font-weight:700;color:#0f172a;line-height:1.3;}
+.proj-link{font-size:12px;font-weight:600;color:#2563eb;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:4px;}
+.proj-desc{font-size:13px;color:#475569;line-height:1.75;}
+.proj-footer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.proj-stack{font-size:11.5px;color:#94a3b8;font-weight:500;}
+.proj-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.proj-tag{padding:3px 9px;border-radius:4px;font-size:11px;font-weight:500;background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe;}
+.proj-tag.neutral{background:#f1f5f9;color:#64748b;border-color:#e2e8f0;}
 
 /* LANGUAGES */
 .lang-row{display:flex;gap:16px;flex-wrap:wrap;}
 .lang-item{display:flex;flex-direction:column;align-items:center;gap:7px;}
-.lang-ring{position:relative;width:80px;height:80px;}
+.lang-ring{position:relative;width:72px;height:72px;}
 .lang-ring svg{display:block;}
-.lang-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#f8fafc;}
-.lang-name{font-size:11px;color:var(--subtext);font-weight:600;}
-.lang-level{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;}
+.lang-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#0f172a;}
+.lang-name{font-size:11px;color:#334155;font-weight:600;}
+.lang-level{font-size:9.5px;color:#94a3b8;text-transform:uppercase;letter-spacing:.6px;}
 
 /* FOOTER */
-footer{background:var(--navy2);border-top:1px solid var(--border);padding:36px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.footer-name{font-size:14px;font-weight:700;color:#94a3b8;}
-.footer-copy{font-size:11px;color:var(--muted);margin-top:3px;}
-.footer-links{display:flex;gap:20px;}
-.footer-links a{font-size:12.5px;color:var(--muted);transition:color .2s;}
-.footer-links a:hover{color:var(--text);}
+footer{background:#fafafa;border-top:1px solid #e2e8f0;padding:32px 24px;}
+.footer-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-left .footer-name{font-size:14px;font-weight:700;color:#0f172a;}
+.footer-left .footer-copy{font-size:12px;color:#94a3b8;margin-top:2px;}
+.footer-right{display:flex;gap:20px;}
+.footer-right a{font-size:13px;color:#64748b;font-weight:500;transition:color .15s;}
+.footer-right a:hover{color:#0f172a;}
 
-@media(max-width:900px){.projects-grid{grid-template-columns:1fr 1fr;}.proj-card.wide{grid-column:span 2;}.skills-grid{grid-template-columns:1fr 1fr;}.edu-grid{grid-template-columns:1fr;}}
-@media(max-width:640px){.projects-grid,.skills-grid{grid-template-columns:1fr;}.proj-card.wide,.proj-card.tall{grid-column:span 1;grid-row:span 1;}.nav-links{display:none;}.edu-grid{grid-template-columns:1fr;}}
+/* DIVIDER */
+hr.divider{border:none;border-top:1px solid #e2e8f0;}
+
+@media(max-width:760px){
+  .expertise-grid{grid-template-columns:1fr 1fr;}
+  .edu-grid{grid-template-columns:1fr;}
+  .stats-row{flex-wrap:wrap;}
+  .stat{border-right:none;border-bottom:1px solid #e2e8f0;flex:1 1 auto;min-width:100px;}
+}
+@media(max-width:520px){
+  .nav-links{display:none;}
+  .expertise-grid{grid-template-columns:1fr;}
+  .hero-name{letter-spacing:-1px;}
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">AY</div>
-  <div class="nav-links">
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#publication">Publication</a>
+  <div class="nav-inner">
+    <div class="nav-logo">Amrin Yanya</div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#publication">Publication</a>
+    </div>
+    <a href="https://www.linkedin.com/in/amrinyanya/" target="_blank" class="nav-cta">Connect</a>
   </div>
-  <a href="https://www.linkedin.com/in/amrinyanya/" target="_blank" class="nav-cta">Connect</a>
 </nav>
 
-<div class="flag"><div class="f1"></div><div class="f2"></div><div class="f3"></div></div>
-
 <!-- HERO -->
-<section class="hero" id="about">
-  <div class="hero-eyebrow">AI Systems &middot; Research &middot; Berlin &mdash; Open to Senior Roles</div>
-  <h1 class="hero-name">Amrin<br><span class="gold">Yanya</span></h1>
-  <p class="hero-title">
-    <strong>AI Systems Engineer &amp; LLM Reliability Researcher</strong><br>
-    Building evaluation infrastructure for next-generation AI. Peer-reviewed at Springer Nature. Operating at the intersection of production LLMOps and applied ML research.
-  </p>
-  <div class="hero-chips">
-    <span class="chip accent">LLMOps</span>
-    <span class="chip accent">Agentic AI</span>
-    <span class="chip accent">RAG Architecture</span>
-    <span class="chip accent">Springer Nature 2026</span>
-    <span class="chip accent">AWS Certified</span>
-    <span class="chip">Berlin, Germany</span>
-    <span class="chip">MSc Data Science</span>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">AI Systems · LLMOps · Research · Berlin</div>
+    <h1 class="hero-name">Amrin Yanya</h1>
+    <p class="hero-title">
+      <strong>AI Systems Engineer &amp; LLM Reliability Researcher</strong><br>
+      Building evaluation infrastructure for next-generation AI. Peer-reviewed at Springer Nature. Operating at the intersection of production LLMOps and applied ML research.
+    </p>
+    <div class="hero-actions">
+      <a href="https://www.linkedin.com/in/amrinyanya/" target="_blank" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Connect on LinkedIn
+      </a>
+      <a href="https://github.com/itsamarin" target="_blank" class="btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a href="https://itsamarin.github.io/DSS-Berlin-Housing/" target="_blank" class="btn-blue">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Live Project
+      </a>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val">91.45</div><div class="stat-lbl">GPA / 100</div></div>
+      <div class="stat"><div class="stat-val">77%</div><div class="stat-lbl">Hallucination ↓</div></div>
+      <div class="stat"><div class="stat-val">200+</div><div class="stat-lbl">LLM Configs</div></div>
+      <div class="stat"><div class="stat-val">Springer</div><div class="stat-lbl">Published 2026</div></div>
+      <div class="stat"><div class="stat-val">5</div><div class="stat-lbl">Languages</div></div>
+    </div>
   </div>
-  <div class="hero-links">
-    <a href="https://github.com/itsamarin" target="_blank" class="btn-primary">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-      GitHub
-    </a>
-    <a href="https://www.linkedin.com/in/amrinyanya/" target="_blank" class="btn-outline">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      LinkedIn
-    </a>
-    <a href="https://itsamarin.github.io/DSS-Berlin-Housing/" target="_blank" class="btn-outline">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Live Project
-    </a>
-  </div>
-  <div class="hero-metrics">
-    <div class="hm-item"><div class="hm-val">91.45</div><div class="hm-lbl">GPA / 100</div></div>
-    <div class="hm-item"><div class="hm-val">77%</div><div class="hm-lbl">Hallucination &darr;</div></div>
-    <div class="hm-item"><div class="hm-val">200+</div><div class="hm-lbl">LLM Configs</div></div>
-    <div class="hm-item"><div class="hm-val">Springer</div><div class="hm-lbl">Published 2026</div></div>
-    <div class="hm-item"><div class="hm-val">5</div><div class="hm-lbl">Languages</div></div>
+</header>
+
+<!-- ABOUT -->
+<section class="cv-section" id="about">
+  <div class="section-inner">
+    <div class="sec-label">About</div>
+    <div class="about-text">
+      <p>I'm an AI Systems Engineer based in Berlin, specialising in LLM evaluation, RAG architecture, and reliability engineering for production AI systems. My work sits at the intersection of academic research and enterprise deployment — building infrastructure that makes large language models trustworthy at scale.</p>
+      <p>My MSc thesis produced the first peer-reviewed multi-objective benchmark for serverless RAG pipelines, published in Springer Nature (August 2026). Before pivoting to AI, I spent years in strategic operations across Southeast Asia, developing the cross-cultural systems thinking that now informs how I design AI for global environments. Open to senior AI engineering roles in Berlin and remote.</p>
+    </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- CORE EXPERTISE -->
+<section class="cv-section" id="expertise">
+  <div class="section-inner">
+    <div class="sec-label">Core Expertise</div>
+    <div class="sec-title">Capabilities &amp; <span>Stack</span></div>
+    <div class="expertise-grid">
+      <div class="exp-block">
+        <div class="exp-block-title">AI Systems &amp; Research</div>
+        <div class="pills">
+          <span class="pill accent">LLMOps</span>
+          <span class="pill accent">RAG Architecture</span>
+          <span class="pill accent">AI Evaluation</span>
+          <span class="pill accent">Agentic Systems</span>
+          <span class="pill">Foundation Models</span>
+          <span class="pill">Hallucination Detection</span>
+          <span class="pill">Multimodal AI</span>
+          <span class="pill">HITL Design</span>
+          <span class="pill">NLP</span>
+          <span class="pill">Computer Vision</span>
+        </div>
+      </div>
+      <div class="exp-block">
+        <div class="exp-block-title">Engineering &amp; Data</div>
+        <div class="pills">
+          <span class="pill accent">Python</span>
+          <span class="pill accent">Prompt Engineering</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Java</span>
+          <span class="pill">pandas · numpy</span>
+          <span class="pill">scikit-learn</span>
+          <span class="pill">Jupyter</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">HTML · CSS · JS</span>
+        </div>
+      </div>
+      <div class="exp-block">
+        <div class="exp-block-title">Infrastructure &amp; Delivery</div>
+        <div class="pills">
+          <span class="pill accent">AWS Certified</span>
+          <span class="pill accent">Serverless AI</span>
+          <span class="pill">AWS S3 · EC2 · RDS</span>
+          <span class="pill">Cloud-native Pipelines</span>
+          <span class="pill">Git · GitHub</span>
+          <span class="pill">Agile Delivery</span>
+          <span class="pill">SLA Engineering</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- EXPERIENCE -->
-<section class="section section-alt" id="experience">
-  <div class="section-label">Career Trajectory</div>
-  <div class="section-title">Where I've <span>Operated</span></div>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
-      <div class="tl-content">
-        <div class="tl-date">2024 &mdash; Present &middot; Berlin, Germany</div>
-        <div class="tl-role">AI Systems Engineer &mdash; LLM Evaluation &amp; Reliability</div>
-        <div class="tl-company">MKS Instruments (Atotech) &mdash; Global Industrial AI</div>
-        <div class="tl-desc">Architecting evaluation pipelines for production LLM systems in a global enterprise environment. Designing automated harnesses to detect hallucination drift, output degradation, and latency regression across model versions. Applying statistical process control to maintain SLA compliance under real production load. Sits at the frontier of LLMOps — bridging academic evaluation rigour with the demands of regulated, safety-critical AI deployment.</div>
-        <div class="tl-tags"><span class="tl-tag">LLMOps</span><span class="tl-tag">Evaluation Architecture</span><span class="tl-tag">Hallucination Detection</span><span class="tl-tag">SLA Engineering</span><span class="tl-tag">AWS</span><span class="tl-tag">Python</span></div>
+<section class="cv-section" id="experience">
+  <div class="section-inner">
+    <div class="sec-label">Career Trajectory</div>
+    <div class="sec-title">Professional <span>Experience</span></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-date">2024 — Present · Berlin, Germany</div>
+          <div class="tl-role">AI Systems Engineer — LLM Evaluation &amp; Reliability</div>
+          <div class="tl-company">MKS Instruments (Atotech) — Global Industrial AI</div>
+          <div class="tl-desc">Architecting evaluation pipelines for production LLM systems in a global enterprise environment. Designing automated harnesses to detect hallucination drift, output degradation, and latency regression across model versions. Applying statistical process control to maintain SLA compliance under real production load. Bridges academic evaluation rigour with the demands of regulated, safety-critical AI deployment.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">LLMOps</span>
+            <span class="tl-tag">Evaluation Architecture</span>
+            <span class="tl-tag">Hallucination Detection</span>
+            <span class="tl-tag">SLA Engineering</span>
+            <span class="tl-tag">AWS</span>
+            <span class="tl-tag">Python</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-left"><div class="tl-dot" style="background:#60a5fa"></div><div class="tl-line"></div></div>
-      <div class="tl-content">
-        <div class="tl-date">Pre-2024 &middot; Southeast Asia &middot; Kansas, US</div>
-        <div class="tl-role">Strategic Operations &amp; Regional Intelligence</div>
-        <div class="tl-company">MKS Instruments &mdash; Thailand · Vietnam · Cambodia · Laos · Myanmar</div>
-        <div class="tl-desc">Strategic regional operations across Southeast Asia's fastest-scaling industrial markets. Built multilingual stakeholder networks across five countries — grounding an intuition for culturally-aware systems and global product deployment. Operating under high ambiguity across political, linguistic, and regulatory borders develops precisely the systems thinking that AI engineering at scale demands. Cross-stationed in Kansas, US for multinational coordination.</div>
-        <div class="tl-tags"><span class="tl-tag">Cross-border Strategy</span><span class="tl-tag">5-Language Fluency</span><span class="tl-tag">Mekong Region</span><span class="tl-tag">Systems Thinking</span><span class="tl-tag">Global Operations</span></div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot" style="background:#60a5fa;box-shadow:0 0 0 2px #60a5fa;"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-date">Pre-2024 · Southeast Asia · Kansas, US</div>
+          <div class="tl-role">Strategic Operations &amp; Regional Intelligence</div>
+          <div class="tl-company">MKS Instruments — Thailand · Vietnam · Cambodia · Laos · Myanmar</div>
+          <div class="tl-desc">Strategic regional operations across Southeast Asia's fastest-scaling industrial markets. Built multilingual stakeholder networks across five countries. Cross-stationed in Kansas, US for multinational coordination. Developed the cultural and systems-thinking foundation that now informs how I design AI for global environments.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Cross-border Strategy</span>
+            <span class="tl-tag">5-Language Fluency</span>
+            <span class="tl-tag">Mekong Region</span>
+            <span class="tl-tag">Systems Thinking</span>
+            <span class="tl-tag">Global Operations</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-left"><div class="tl-dot" style="background:#93c5fd"></div></div>
-      <div class="tl-content">
-        <div class="tl-date">2021 &middot; Remote &middot; Google Certified</div>
-        <div class="tl-role">Product &amp; Programme Management</div>
-        <div class="tl-company">Google Project Management &middot; Credential: 6JBZ94WEF7UD</div>
-        <div class="tl-desc">Google's end-to-end programme management curriculum — Agile delivery, stakeholder alignment, risk modelling, and data-driven decision cadence. Establishes structured execution discipline that translates directly into shipping AI systems that teams can trust and organisations can scale.</div>
-        <div class="tl-tags"><span class="tl-tag">Agile Delivery</span><span class="tl-tag">Risk Modelling</span><span class="tl-tag">Stakeholder Alignment</span><span class="tl-tag">Google Certified</span></div>
+
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot" style="background:#93c5fd;box-shadow:0 0 0 2px #93c5fd;"></div></div>
+        <div class="tl-content">
+          <div class="tl-date">2021 · Remote · Google Certified</div>
+          <div class="tl-role">Product &amp; Programme Management</div>
+          <div class="tl-company">Google Project Management · Credential: 6JBZ94WEF7UD</div>
+          <div class="tl-desc">Google's end-to-end programme management curriculum — Agile delivery, stakeholder alignment, risk modelling, and data-driven decision cadence. Establishes structured execution discipline that translates directly into shipping AI systems that teams can trust.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Agile Delivery</span>
+            <span class="tl-tag">Risk Modelling</span>
+            <span class="tl-tag">Stakeholder Alignment</span>
+            <span class="tl-tag">Google Certified</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
-
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <div class="section-label">GitHub &middot; itsamarin &middot; 10 Repositories</div>
-  <div class="section-title">Research &amp; <span>Engineering</span></div>
-  <div class="projects-grid">
-
-    <div class="proj-card wide tall" onclick="window.open('https://github.com/itsamarin','_blank')">
-      <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&auto=format&fit=crop')"></div>
-      <div class="proj-accent" style="background:linear-gradient(90deg,#1d4ed8,#3b82f6)"></div>
-      <div class="proj-body">
-        <div class="proj-name">Enterprise RAG Evaluation Framework</div>
-        <div class="proj-desc">First peer-reviewed multi-objective benchmark for serverless RAG. 200 configurations across FiQA, MS MARCO &amp; SQuAD 2.0. 77% hallucination reduction at $2.93×10⁻⁷ per query. The ERS framework gives enterprises a quantitative tool to compare LLM pipeline architectures at scale — published Springer Nature, 2026.</div>
-        <div class="proj-meta">
-          <span class="proj-lang">Python &middot; LLMOps &middot; Serverless</span>
-          <div class="proj-tags">
-            <span class="proj-tag" style="color:#93c5fd;border-color:rgba(59,130,246,.4)">Springer Nature</span>
-            <span class="proj-tag" style="color:#60a5fa;border-color:rgba(59,130,246,.3)">RAG · LLMOps</span>
-            <span class="proj-tag" style="color:#bfdbfe;border-color:rgba(59,130,246,.25)">Peer Reviewed</span>
-          </div>
-        </div>
-      </div>
-      <div class="proj-cta">View &#x2197;</div>
-    </div>
-
-    <div class="proj-card" onclick="window.open('https://itsamarin.github.io/DSS-Berlin-Housing/','_blank')">
-      <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1587958408092-f20a04a87a37?w=700&auto=format&fit=crop')"></div>
-      <div class="proj-accent" style="background:linear-gradient(90deg,#1e40af,#3b82f6)"></div>
-      <div class="proj-body">
-        <div class="proj-name">AI Urban Decision Support</div>
-        <div class="proj-desc">Intelligent matching engine for Berlin's accommodation market — 2,319 verified listings, real-time analytics, and AI-driven tenant–landlord compatibility scoring. A proof of applied AI in high-stakes human contexts: smart cities, policy platforms, and socioeconomic systems.</div>
-        <div class="proj-meta">
-          <span class="proj-lang">JS &middot; Chart.js &middot; Decision AI</span>
-          <div class="proj-tags">
-            <span class="proj-tag" style="color:#60a5fa;border-color:rgba(59,130,246,.3)">Live Product</span>
-            <span class="proj-tag" style="color:#93c5fd;border-color:rgba(59,130,246,.25)">Smart City AI</span>
-          </div>
-        </div>
-      </div>
-      <div class="proj-cta">Open demo &#x2197;</div>
-    </div>
-
-    <div class="proj-card" onclick="window.open('https://github.com/itsamarin/Brics-USD-Forecasting','_blank')">
-      <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&auto=format&fit=crop')"></div>
-      <div class="proj-accent" style="background:linear-gradient(90deg,#1e40af,#60a5fa)"></div>
-      <div class="proj-body">
-        <div class="proj-name">Macroeconomic Signal Modelling</div>
-        <div class="proj-desc">Time-series forecasting on the defining financial question of the decade — post-USD reserve currency dynamics. Commodity correlation analysis across Bitcoin, Gold &amp; Oil using BRICS accumulation data. Applicable to sovereign AI, financial intelligence systems, and geopolitical risk modelling.</div>
-        <div class="proj-meta">
-          <span class="proj-lang">Python &middot; pandas &middot; Time-series</span>
-          <div class="proj-tags">
-            <span class="proj-tag" style="color:#60a5fa;border-color:rgba(59,130,246,.3)">Geopolitical AI</span>
-            <span class="proj-tag" style="color:#93c5fd;border-color:rgba(59,130,246,.25)">Forecasting</span>
-          </div>
-        </div>
-      </div>
-      <div class="proj-cta">View repo &#x2197;</div>
-    </div>
-
-    <div class="proj-card wide" onclick="window.open('https://github.com/itsamarin/berlin-potsdam-transit-hitl','_blank')">
-      <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=900&auto=format&fit=crop')"></div>
-      <div class="proj-accent" style="background:linear-gradient(90deg,#1d4ed8,#3b82f6)"></div>
-      <div class="proj-body">
-        <div class="proj-name">Human-in-the-Loop Transit AI</div>
-        <div class="proj-desc">Safety-critical AI framework for real-time public transport delay prediction with human oversight. VBB GTFS + BVG live API. Comparative benchmarking against London TfL, Tokyo Metro &amp; BART establishes transfer potential for autonomous urban mobility, infrastructure AI, and smart city governance.</div>
-        <div class="proj-meta">
-          <span class="proj-lang">Python &middot; GTFS &middot; Real-time API</span>
-          <div class="proj-tags">
-            <span class="proj-tag" style="color:#60a5fa;border-color:rgba(59,130,246,.3)">Safety-critical AI</span>
-            <span class="proj-tag" style="color:#93c5fd;border-color:rgba(59,130,246,.25)">Urban Mobility</span>
-            <span class="proj-tag" style="color:#bfdbfe;border-color:rgba(59,130,246,.2)">HITL</span>
-          </div>
-        </div>
-      </div>
-      <div class="proj-cta">View repo &#x2197;</div>
-    </div>
-
-    <div class="proj-card" onclick="window.open('https://github.com/itsamarin/Video-Recognition-in-Egocentric-Kitchens','_blank')">
-      <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1535016120720-40c646be5580?w=700&auto=format&fit=crop')"></div>
-      <div class="proj-accent" style="background:linear-gradient(90deg,#1e40af,#3b82f6)"></div>
-      <div class="proj-body">
-        <div class="proj-name">Embodied Multimodal Perception</div>
-        <div class="proj-desc">Vision–language fusion for first-person action recognition in egocentric video. Grounding language narrations into spatial understanding — a capability central to robotics perception, AR/XR interfaces, and the next wave of agentic AI systems operating in physical environments.</div>
-        <div class="proj-meta">
-          <span class="proj-lang">Multimodal AI &middot; Vision-Language</span>
-          <div class="proj-tags">
-            <span class="proj-tag" style="color:#60a5fa;border-color:rgba(59,130,246,.3)">Embodied AI</span>
-            <span class="proj-tag" style="color:#93c5fd;border-color:rgba(59,130,246,.25)">AR/XR</span>
-          </div>
-        </div>
-      </div>
-      <div class="proj-cta">View repo &#x2197;</div>
-    </div>
-
-    <div class="proj-card" onclick="window.open('https://github.com/itsamarin/Academic-DataFusion','_blank')">
-      <div class="proj-bg" style="background-image:url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=700&auto=format&fit=crop')"></div>
-      <div class="proj-accent" style="background:linear-gradient(90deg,#1d4ed8,#60a5fa)"></div>
-      <div class="proj-body">
-        <div class="proj-name">Heterogeneous Signal Fusion</div>
-        <div class="proj-desc">Multi-source data fusion for early academic outcome prediction. Core pattern: combining weak heterogeneous signals into high-confidence predictions — a transferable methodology with direct applications in clinical AI, edtech, financial risk, and any domain where ground truth is expensive and early signals are sparse.</div>
-        <div class="proj-meta">
-          <span class="proj-lang">Python &middot; scikit-learn &middot; Fusion</span>
-          <div class="proj-tags">
-            <span class="proj-tag" style="color:#93c5fd;border-color:rgba(59,130,246,.3)">Signal Fusion</span>
-            <span class="proj-tag" style="color:#60a5fa;border-color:rgba(59,130,246,.25)">Predictive ML</span>
-          </div>
-        </div>
-      </div>
-      <div class="proj-cta">View repo &#x2197;</div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
 
 <!-- EDUCATION -->
-<section class="section section-alt" id="education">
-  <div class="section-label">Foundation</div>
-  <div class="section-title">Research &amp; <span>Credentials</span></div>
-  <div class="edu-grid">
-    <div class="edu-card edu-main">
-      <div class="edu-tag">2024 &mdash; 2026 &middot; Potsdam, Germany</div>
-      <div class="edu-degree">MSc Data Science</div>
-      <div class="edu-school">University of Europe for Applied Sciences</div>
-      <div class="edu-detail">Specialisation in ML systems, AI evaluation, and data engineering. Thesis produced the first peer-reviewed multi-objective benchmark for serverless RAG — demonstrating research-to-production capability at graduate level. The resulting ERS framework was accepted to Springer Nature in August 2026, establishing a reproducible standard for enterprise LLM deployment quality.</div>
-      <div><span class="edu-badge badge-purple">Distinction &middot; GPA 91.45 / 100</span></div>
-    </div>
-    <div class="edu-card edu-cert">
-      <div class="edu-tag">Industry Credentials</div>
-      <div class="cert-list">
-        <div class="cert-row"><div class="cert-name">AWS Academy &mdash; Cloud Web Application Builder</div><div class="cert-meta">Amazon Web Services &middot; June 2026 &middot; Serverless &amp; Cloud-native AI</div></div>
-        <div class="cert-row"><div class="cert-name">Google Project Management Professional</div><div class="cert-meta">Google &middot; 2021 &middot; ID: 6JBZ94WEF7UD &middot; Agile &amp; Programme Delivery</div></div>
-        <div class="cert-row"><div class="cert-name">Data Visualization &amp; Narrative Design</div><div class="cert-meta">LinkedIn Learning &middot; 2020 &middot; Communicating Complex Systems</div></div>
-        <div class="cert-row"><div class="cert-name">Applied Data Science Fundamentals</div><div class="cert-meta">LinkedIn Learning &middot; 2020 &middot; Statistical Storytelling</div></div>
+<section class="cv-section" id="education">
+  <div class="section-inner">
+    <div class="sec-label">Foundation</div>
+    <div class="sec-title">Research &amp; <span>Credentials</span></div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-eyebrow">2024 — 2026 · Potsdam, Germany</div>
+        <div class="edu-degree">MSc Data Science</div>
+        <div class="edu-school">University of Europe for Applied Sciences</div>
+        <div class="edu-detail">Specialisation in ML systems, AI evaluation, and data engineering. Thesis produced the first peer-reviewed multi-objective benchmark for serverless RAG — accepted to Springer Nature, August 2026, establishing a reproducible standard for enterprise LLM deployment quality.</div>
+        <div><span class="edu-badge">Distinction · GPA 91.45 / 100</span></div>
       </div>
-      <div><span class="edu-badge badge-gold">4 Verified Credentials</span></div>
+      <div class="edu-card edu-cert">
+        <div class="edu-eyebrow">Industry Credentials</div>
+        <div class="cert-list">
+          <div>
+            <div class="cert-name">AWS Academy — Cloud Web Application Builder</div>
+            <div class="cert-meta">Amazon Web Services · June 2026 · Serverless &amp; Cloud-native AI</div>
+          </div>
+          <div>
+            <div class="cert-name">Google Project Management Professional</div>
+            <div class="cert-meta">Google · 2021 · ID: 6JBZ94WEF7UD · Agile &amp; Programme Delivery</div>
+          </div>
+          <div>
+            <div class="cert-name">Data Visualization &amp; Narrative Design</div>
+            <div class="cert-meta">LinkedIn Learning · 2020 · Communicating Complex Systems</div>
+          </div>
+          <div>
+            <div class="cert-name">Applied Data Science Fundamentals</div>
+            <div class="cert-meta">LinkedIn Learning · 2020 · Statistical Storytelling</div>
+          </div>
+        </div>
+        <div><span class="edu-badge">4 Verified Credentials</span></div>
+      </div>
     </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- PUBLICATION -->
-<section class="section" id="publication">
-  <div class="section-label">Peer-Reviewed Research</div>
-  <div class="section-title">Springer Nature <span>2026</span></div>
-  <div class="pub-card">
-    <div class="pub-journal">Springer Nature &middot; Published August 27, 2026</div>
-    <div class="pub-title">A Multi-Objective Enterprise Readiness Framework for Serverless Retrieval-Augmented Generation</div>
-    <div class="pub-authors"><strong>Amrin Yanya</strong>, Prof. Dr Talha Ali Khan, Raja Hashim Ali</div>
-    <div class="pub-abstract">Establishes the first systematic, quantitative benchmark for evaluating serverless LLM pipelines at enterprise scale. As AI moves from prototype to regulated production, organisations lack a principled way to compare RAG architectures across cost, reliability, and accuracy simultaneously. This work closes that gap. 200 configurations tested across FiQA, MS MARCO, and SQuAD 2.0 achieved a 77% reduction in hallucination rates at $2.93×10⁻⁷ per query. The Enterprise Readiness Score (ERS = 0.35×Accuracy + 0.25×CostEff + 0.25×CalibQual + 0.15×SLAComp) reached 72.7, with SLA compliance at 89.8% — providing practitioners with a replicable framework for production AI governance.</div>
-    <div class="pub-metrics">
-      <div class="pub-metric"><div class="pm-val">200</div><div class="pm-lbl">Configs</div></div>
-      <div class="pub-metric"><div class="pm-val">77%</div><div class="pm-lbl">Hallucination &darr;</div></div>
-      <div class="pub-metric"><div class="pm-val">72.7</div><div class="pm-lbl">ERS Score</div></div>
-      <div class="pub-metric"><div class="pm-val">89.8%</div><div class="pm-lbl">SLA</div></div>
-      <div class="pub-metric"><div class="pm-val">3</div><div class="pm-lbl">Datasets</div></div>
+<section class="cv-section" id="publication">
+  <div class="section-inner">
+    <div class="sec-label">Peer-Reviewed Research</div>
+    <div class="sec-title">Springer Nature <span>2026</span></div>
+    <div class="pub-card">
+      <div class="pub-venue">Springer Nature · Published August 27, 2026</div>
+      <div class="pub-title">A Multi-Objective Enterprise Readiness Framework for Serverless Retrieval-Augmented Generation</div>
+      <div class="pub-authors"><strong>Amrin Yanya</strong>, Prof. Dr Talha Ali Khan, Raja Hashim Ali</div>
+      <div class="pub-abstract">Establishes the first systematic, quantitative benchmark for evaluating serverless LLM pipelines at enterprise scale. As AI moves from prototype to regulated production, organisations lack a principled way to compare RAG architectures across cost, reliability, and accuracy simultaneously. This work closes that gap. 200 configurations tested across FiQA, MS MARCO, and SQuAD 2.0 achieved a 77% reduction in hallucination rates at $2.93×10⁻⁷ per query. The Enterprise Readiness Score (ERS = 0.35×Accuracy + 0.25×CostEff + 0.25×CalibQual + 0.15×SLAComp) reached 72.7, with SLA compliance at 89.8% — providing practitioners with a replicable framework for production AI governance.</div>
+      <div class="pub-metrics">
+        <div class="pub-metric"><div class="pm-val">200</div><div class="pm-lbl">Configs</div></div>
+        <div class="pub-metric"><div class="pm-val">77%</div><div class="pm-lbl">Hallucination ↓</div></div>
+        <div class="pub-metric"><div class="pm-val">72.7</div><div class="pm-lbl">ERS Score</div></div>
+        <div class="pub-metric"><div class="pm-val">89.8%</div><div class="pm-lbl">SLA</div></div>
+        <div class="pub-metric"><div class="pm-val">3</div><div class="pm-lbl">Datasets</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- FEATURED WORK -->
+<section class="cv-section" id="projects">
+  <div class="section-inner">
+    <div class="sec-label">GitHub · itsamarin · 10 Repositories</div>
+    <div class="sec-title">Featured <span>Work</span></div>
+    <div class="projects-list">
 
-<!-- SKILLS -->
-<section class="section section-alt" id="skills">
-  <div class="section-label">Technical Depth</div>
-  <div class="section-title">Capabilities &amp; <span>Stack</span></div>
-  <div class="skills-grid">
-    <div class="skill-block">
-      <div class="skill-block-title">AI Systems &amp; Research</div>
-      <div class="skill-pills">
-        <span class="skill-pill hot">LLMOps</span><span class="skill-pill hot">RAG Architecture</span><span class="skill-pill hot">AI Evaluation</span>
-        <span class="skill-pill hot">Agentic Systems</span><span class="skill-pill">Foundation Models</span><span class="skill-pill">Hallucination Detection</span>
-        <span class="skill-pill">Multimodal AI</span><span class="skill-pill">HITL Design</span><span class="skill-pill">NLP</span><span class="skill-pill">Computer Vision</span>
+      <div class="proj-card" onclick="window.open('https://github.com/itsamarin','_blank')">
+        <div class="proj-header">
+          <div class="proj-name">Enterprise RAG Evaluation Framework</div>
+          <div class="proj-link">View ↗</div>
+        </div>
+        <div class="proj-desc">First peer-reviewed multi-objective benchmark for serverless RAG. 200 configurations across FiQA, MS MARCO &amp; SQuAD 2.0. 77% hallucination reduction at $2.93×10⁻⁷ per query. The ERS framework gives enterprises a quantitative tool to compare LLM pipeline architectures at scale — published Springer Nature, 2026.</div>
+        <div class="proj-footer">
+          <span class="proj-stack">Python · LLMOps · Serverless</span>
+          <div class="proj-tags">
+            <span class="proj-tag">Springer Nature</span>
+            <span class="proj-tag">RAG · LLMOps</span>
+            <span class="proj-tag">Peer Reviewed</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Engineering &amp; Data</div>
-      <div class="skill-pills">
-        <span class="skill-pill hot">Python</span><span class="skill-pill hot">Prompt Engineering</span><span class="skill-pill">SQL</span>
-        <span class="skill-pill">Java</span><span class="skill-pill">pandas · numpy</span><span class="skill-pill">scikit-learn</span>
-        <span class="skill-pill">Jupyter</span><span class="skill-pill">REST APIs</span><span class="skill-pill">HTML · CSS · JS</span>
+
+      <div class="proj-card" onclick="window.open('https://itsamarin.github.io/DSS-Berlin-Housing/','_blank')">
+        <div class="proj-header">
+          <div class="proj-name">AI Urban Decision Support — Berlin Housing</div>
+          <div class="proj-link">Live demo ↗</div>
+        </div>
+        <div class="proj-desc">Intelligent matching engine for Berlin's accommodation market — 2,319 verified listings, real-time analytics, and AI-driven tenant–landlord compatibility scoring. A proof of applied AI in high-stakes human contexts: smart cities, policy platforms, and socioeconomic systems.</div>
+        <div class="proj-footer">
+          <span class="proj-stack">JS · Chart.js · Decision AI</span>
+          <div class="proj-tags">
+            <span class="proj-tag">Live Product</span>
+            <span class="proj-tag neutral">Smart City AI</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="skill-block">
-      <div class="skill-block-title">Infrastructure &amp; Delivery</div>
-      <div class="skill-pills">
-        <span class="skill-pill hot">AWS Certified</span><span class="skill-pill hot">Serverless AI</span><span class="skill-pill">AWS S3 · EC2 · RDS</span>
-        <span class="skill-pill">Cloud-native Pipelines</span><span class="skill-pill">Git · GitHub</span>
-        <span class="skill-pill">Agile Delivery</span><span class="skill-pill">SLA Engineering</span>
+
+      <div class="proj-card" onclick="window.open('https://github.com/itsamarin/Brics-USD-Forecasting','_blank')">
+        <div class="proj-header">
+          <div class="proj-name">Macroeconomic Signal Modelling</div>
+          <div class="proj-link">View repo ↗</div>
+        </div>
+        <div class="proj-desc">Time-series forecasting on post-USD reserve currency dynamics. Commodity correlation analysis across Bitcoin, Gold &amp; Oil using BRICS accumulation data. Applicable to sovereign AI, financial intelligence systems, and geopolitical risk modelling.</div>
+        <div class="proj-footer">
+          <span class="proj-stack">Python · pandas · Time-series</span>
+          <div class="proj-tags">
+            <span class="proj-tag neutral">Geopolitical AI</span>
+            <span class="proj-tag neutral">Forecasting</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="section-label" style="margin-bottom:20px;">Linguistic Range &middot; 5 Operating Languages</div>
-  <div class="lang-row">
-    <div class="lang-item">
-      <div class="lang-ring"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="8"/><circle cx="40" cy="40" r="32" fill="none" stroke="#3b82f6" stroke-width="8" stroke-dasharray="201 201" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg><div class="lang-center">EN</div></div>
-      <div class="lang-name">English</div><div class="lang-level">Native</div>
-    </div>
-    <div class="lang-item">
-      <div class="lang-ring"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="8"/><circle cx="40" cy="40" r="32" fill="none" stroke="#3b82f6" stroke-width="8" stroke-dasharray="201 201" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg><div class="lang-center">TH</div></div>
-      <div class="lang-name">Thai</div><div class="lang-level">Native</div>
-    </div>
-    <div class="lang-item">
-      <div class="lang-ring"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="8"/><circle cx="40" cy="40" r="32" fill="none" stroke="#60a5fa" stroke-width="8" stroke-dasharray="171 201" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg><div class="lang-center">MS</div></div>
-      <div class="lang-name">Malay</div><div class="lang-level">Fluent</div>
-    </div>
-    <div class="lang-item">
-      <div class="lang-ring"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="8"/><circle cx="40" cy="40" r="32" fill="none" stroke="#60a5fa" stroke-width="8" stroke-dasharray="161 201" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg><div class="lang-center">LO</div></div>
-      <div class="lang-name">Lao</div><div class="lang-level">Professional</div>
-    </div>
-    <div class="lang-item">
-      <div class="lang-ring"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="8"/><circle cx="40" cy="40" r="32" fill="none" stroke="#93c5fd" stroke-width="8" stroke-dasharray="141 201" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg><div class="lang-center">DE</div></div>
-      <div class="lang-name">German</div><div class="lang-level">B1 &middot; Learning</div>
+
+      <div class="proj-card" onclick="window.open('https://github.com/itsamarin/berlin-potsdam-transit-hitl','_blank')">
+        <div class="proj-header">
+          <div class="proj-name">Human-in-the-Loop Transit AI</div>
+          <div class="proj-link">View repo ↗</div>
+        </div>
+        <div class="proj-desc">Safety-critical AI framework for real-time public transport delay prediction with human oversight. VBB GTFS + BVG live API. Comparative benchmarking against London TfL, Tokyo Metro &amp; BART establishes transfer potential for autonomous urban mobility and smart city governance.</div>
+        <div class="proj-footer">
+          <span class="proj-stack">Python · GTFS · Real-time API</span>
+          <div class="proj-tags">
+            <span class="proj-tag">Safety-critical AI</span>
+            <span class="proj-tag neutral">Urban Mobility</span>
+            <span class="proj-tag neutral">HITL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="window.open('https://github.com/itsamarin/Video-Recognition-in-Egocentric-Kitchens','_blank')">
+        <div class="proj-header">
+          <div class="proj-name">Embodied Multimodal Perception</div>
+          <div class="proj-link">View repo ↗</div>
+        </div>
+        <div class="proj-desc">Vision–language fusion for first-person action recognition in egocentric video. Grounding language narrations into spatial understanding — a capability central to robotics perception, AR/XR interfaces, and the next wave of agentic AI systems operating in physical environments.</div>
+        <div class="proj-footer">
+          <span class="proj-stack">Multimodal AI · Vision-Language</span>
+          <div class="proj-tags">
+            <span class="proj-tag neutral">Embodied AI</span>
+            <span class="proj-tag neutral">AR/XR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="window.open('https://github.com/itsamarin/Academic-DataFusion','_blank')">
+        <div class="proj-header">
+          <div class="proj-name">Heterogeneous Signal Fusion</div>
+          <div class="proj-link">View repo ↗</div>
+        </div>
+        <div class="proj-desc">Multi-source data fusion for early academic outcome prediction. Core pattern: combining weak heterogeneous signals into high-confidence predictions — transferable to clinical AI, edtech, financial risk, and any domain where ground truth is expensive and early signals are sparse.</div>
+        <div class="proj-footer">
+          <span class="proj-stack">Python · scikit-learn · Fusion</span>
+          <div class="proj-tags">
+            <span class="proj-tag neutral">Signal Fusion</span>
+            <span class="proj-tag neutral">Predictive ML</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<div class="flag"><div class="f1"></div><div class="f2"></div><div class="f3"></div></div>
+<!-- LANGUAGES -->
+<section class="cv-section" id="languages">
+  <div class="section-inner">
+    <div class="sec-label">Linguistic Range · 5 Operating Languages</div>
+    <div class="sec-title">Language <span>Fluency</span></div>
+    <div class="lang-row">
+      <div class="lang-item">
+        <div class="lang-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="28" fill="none" stroke="#e2e8f0" stroke-width="7"/><circle cx="36" cy="36" r="28" fill="none" stroke="#2563eb" stroke-width="7" stroke-dasharray="176 176" stroke-linecap="round" transform="rotate(-90 36 36)"/></svg>
+          <div class="lang-center">EN</div>
+        </div>
+        <div class="lang-name">English</div>
+        <div class="lang-level">Native</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="28" fill="none" stroke="#e2e8f0" stroke-width="7"/><circle cx="36" cy="36" r="28" fill="none" stroke="#2563eb" stroke-width="7" stroke-dasharray="176 176" stroke-linecap="round" transform="rotate(-90 36 36)"/></svg>
+          <div class="lang-center">TH</div>
+        </div>
+        <div class="lang-name">Thai</div>
+        <div class="lang-level">Native</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="28" fill="none" stroke="#e2e8f0" stroke-width="7"/><circle cx="36" cy="36" r="28" fill="none" stroke="#3b82f6" stroke-width="7" stroke-dasharray="150 176" stroke-linecap="round" transform="rotate(-90 36 36)"/></svg>
+          <div class="lang-center">MS</div>
+        </div>
+        <div class="lang-name">Malay</div>
+        <div class="lang-level">Fluent</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="28" fill="none" stroke="#e2e8f0" stroke-width="7"/><circle cx="36" cy="36" r="28" fill="none" stroke="#60a5fa" stroke-width="7" stroke-dasharray="141 176" stroke-linecap="round" transform="rotate(-90 36 36)"/></svg>
+          <div class="lang-center">LO</div>
+        </div>
+        <div class="lang-name">Lao</div>
+        <div class="lang-level">Professional</div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="28" fill="none" stroke="#e2e8f0" stroke-width="7"/><circle cx="36" cy="36" r="28" fill="none" stroke="#93c5fd" stroke-width="7" stroke-dasharray="106 176" stroke-linecap="round" transform="rotate(-90 36 36)"/></svg>
+          <div class="lang-center">DE</div>
+        </div>
+        <div class="lang-name">German</div>
+        <div class="lang-level">B1 · Learning</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- FOOTER -->
 <footer>
-  <div>
-    <div class="footer-name">Amrin Yanya</div>
-    <div class="footer-copy">AI Systems Engineer &middot; Researcher &middot; Builder &middot; Berlin 2026</div>
-  </div>
-  <div class="footer-links">
-    <a href="https://github.com/itsamarin" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/amrinyanya/" target="_blank">LinkedIn</a>
-    <a href="https://itsamarin.github.io/DSS-Berlin-Housing/" target="_blank">Live Project</a>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-name">Amrin Yanya</div>
+      <div class="footer-copy">AI Systems Engineer · Researcher · Builder · Berlin 2026</div>
+    </div>
+    <div class="footer-right">
+      <a href="https://github.com/itsamarin" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/amrinyanya/" target="_blank">LinkedIn</a>
+      <a href="https://itsamarin.github.io/DSS-Berlin-Housing/" target="_blank">Live Project</a>
+    </div>
   </div>
 </footer>
 
